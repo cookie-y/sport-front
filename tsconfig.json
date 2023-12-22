@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "paths": {
-      "@/*": ["src/*"]
-    },
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
@@ -16,6 +13,5 @@
     "lib": ["esnext", "dom"],
     "types": ["@dcloudio/types"],
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "manual-import.d.ts"],
-  "exclude": ["src/store/**/*.js"]
+  "include": ["utils/**/*.ts", "store/**/*.ts", "constants/**/*.ts", "type/**/*.d.ts", "pages/**/*.vue", "components/**/*.vue"],
 }
