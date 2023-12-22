@@ -6,12 +6,52 @@
 	},
 	"pages": [
 		{
-			"path" : "pages/me/index",
+			"path" : "pages/auth/signIn",
 			"style" :                                                                                    
 			{
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
-			}	
+			}
+		},
+		{
+			"path" : "pages/auth/authEmail",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/auth/authCode",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/auth/privacyAgreement",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/auth/signUp",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/auth/resetPassword",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
 		},
 		{
 			"path" : "pages/race/index",
@@ -22,12 +62,172 @@
 			}
 		},
 		{
-			"path" : "pages/message/index",
+			"path" : "pages/race/detail/index",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path" : "pages/search/index",
 			"style" :                                                                                    
 			{
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path" : "pages/search/result",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/message/index",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "消息",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/message/detail",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/me/index",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/me/editSelect/index",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/me/editInf/index",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/me/editPassword/index",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/me/editEmail/index",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/me/iParticipate/index",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/me/iOrganized/index",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/me/iOrganized/editNotice",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/me/iOrganized/editGroup",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/me/iOrganized/scheduleList",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/me/iOrganized/editSchedule",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/me/iOrganized/editScheduleList",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/member/list",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/member/edit",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/common/success",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
+		},
+		{
+			"path" : "pages/componentTest/index",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}	
 		}
 	],
 	"globalStyle": {

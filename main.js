@@ -1,8 +1,10 @@
 import App from './App'
 import uviewPlus from '@/uni_modules/uview-plus'
-import * as Pinia from 'pinia';
+import pinia from './store/index';
 import "./mock/index.ts"
 import 'uno.css';
+import '@/utils/dayjs';
+import '@/utils/interceptor';
 
 // #ifndef VUE3
 import Vue from 'vue'
@@ -19,8 +21,7 @@ app.$mount()
 import { createSSRApp } from 'vue'
 export function createApp() {
   const app = createSSRApp(App)
-  app.use(uviewPlus)
-	app.use(Pinia.createPinia());
+  app.use(pinia).use(uviewPlus)
   return {
     app
   }

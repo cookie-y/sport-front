@@ -6,16 +6,14 @@
 </template>
 
 <script lang="ts" setup>
+import { handleBack } from '@/utils/router';
+
 interface navigation {
   title: string; // 标题
 }
 withDefaults(defineProps<navigation>(), {
   title: '',
 });
-// 处理回退
-const handleBack = () => {
-  uni.navigateBack();
-};
 </script>
 
 <style></style>
