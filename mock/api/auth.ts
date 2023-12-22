@@ -7,7 +7,7 @@ export default [
       return {
         code: 200,
         message: '登录成功',
-        data: null,
+        data: 'token=87870798079079',
       };
     },
   },

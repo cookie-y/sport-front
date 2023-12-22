@@ -17,8 +17,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { onLoad } from '@dcloudio/uni-app';
 import { resetPassword } from '@/api/auth';
-import { getUrlParam } from '@/utils/router';
 import { PASSWORD } from '@/constants/validateRule';
 
 interface TForm {
@@ -40,7 +40,11 @@ const rules = {
 
 // 处理提交
 const info = ref();
-const email = getUrlParam('email');
+let email: string | undefined;
+
+onLoad((option: any) => {
+  email = option.email;
+});
 const handleSubmit = async () => {
   try {
     await info.value.validate();

@@ -50,12 +50,11 @@
 <script lang="ts" setup>
 import { onLoad, onPullDownRefresh } from '@dcloudio/uni-app';
 import { ref, shallowRef } from 'vue';
-import { isEmpty } from 'lodash';
+import { isEmpty, toNumber } from 'lodash';
 import { getRaceDetail, getParticipateTeamList } from '@/api/race';
 import { TRace } from '@/types/object/race';
 import { TParticipateTeam } from '@/types/object/account';
 import { RACE_STATES, RACE_STATE } from '@/constants/race';
-import { getUrlParam } from '@/utils/router';
 import Notice from './notice.vue';
 import Participant from './participant.vue';
 import Schedule from './schedule.vue';
@@ -101,7 +100,10 @@ const handleChangeTab = (tab: { index: number }) => {
 // #endregion
 
 // #region 比赛数据
-const raceId = getUrlParam('raceId');
+let raceId: number;
+onLoad((option: any) => {
+  raceId = toNumber(option.raceId);
+});
 const raceData = ref<TRace>({
   raceId: 0,
   raceName: '',

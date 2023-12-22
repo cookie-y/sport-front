@@ -22,10 +22,10 @@
         <view
           v-if="!item.results"
           @click.stop="
-          () => {
-            handleEnterScore(item.id as number);
-          }
-        "
+            () => {
+              handleEnterScore(item.id as number);
+            }
+          "
         >
           <u-button text="录入成绩" />
         </view>

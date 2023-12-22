@@ -66,6 +66,7 @@ const handleSignIn = async () => {
     const res = await signIn(params);
     setToken(res.data);
     getAccountInfo();
+    uni.$u.toast(res.message);
     uni.switchTab({ url: '/pages/race/index' });
   } catch (errors: any) {
     if (errors.data.message) {

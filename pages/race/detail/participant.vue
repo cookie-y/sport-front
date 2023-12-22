@@ -53,13 +53,13 @@ const participateTeams = computed(() =>
       lastVal.set(currentVal.group, [currentVal]);
     }
     return lastVal;
-  }, new Map())
+  }, new Map()),
 );
 
 console.log(
   sortBy(participateTeams.value.keys(), (a) => {
     console.log(a);
-  })
+  }),
 );
 onLoad(() => {
   emits('getTeamList');

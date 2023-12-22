@@ -12,6 +12,8 @@ node_modules
 unpackage
 dist
 dist-ssr
+.hbuilderx
+.vscode
 *.local
 
 # Editor directories and files

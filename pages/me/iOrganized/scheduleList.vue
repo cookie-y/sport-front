@@ -34,11 +34,15 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import dayjs from 'dayjs';
+import { onLoad } from '@dcloudio/uni-app';
+import { toNumber } from 'lodash';
 import { TRaceSchedule } from '@/types/object/race';
 import { getScheduleList, getScheduleDateList } from '@/api/schedule';
-import { getUrlParam } from '@/utils/router';
 
-const raceId = getUrlParam('raceId');
+let raceId: number;
+onLoad((option: any) => {
+  raceId = toNumber(option.raceId);
+});
 
 // 处理日期切换
 const date = ref(dayjs().format('YYYY-MM-DD'));

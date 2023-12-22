@@ -33,11 +33,16 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
 import { useAccountStore } from '@/store/account';
 
 const store = useAccountStore();
 
-const { accountInfo } = store;
+const accountInfo = ref({});
+onMounted(async () => {
+  const { getAccountInfo } = store;
+  accountInfo.value = await getAccountInfo();
+});
 
 // 处理编辑
 const handleEdit = () => {

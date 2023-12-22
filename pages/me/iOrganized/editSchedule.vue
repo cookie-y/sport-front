@@ -48,12 +48,16 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { toNumber } from 'lodash';
+import { onLoad } from '@dcloudio/uni-app';
 import { TRaceScheduleItem } from '@/types/object/race';
 import { getScheduleDetail, enterScore } from '@/api/schedule';
 import ParticipateTeam from '@/components/race/participate.vue';
-import { getUrlParam, handleBack } from '@/utils/router';
+import { handleBack } from '@/utils/router';
 
-const id = toNumber(getUrlParam('id'));
+let id: number;
+onLoad((option: any) => {
+  id = toNumber(option.id);
+});
 
 interface TForm extends TRaceScheduleItem {
   scores: Array<Array<number>>;

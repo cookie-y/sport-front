@@ -7,10 +7,10 @@ export const request = (params: paramsType): Promise<any> => {
     const config = {
       ...params,
       success: (res: any) => {
-				if (/^\/mockapi/.test(params.url)) {
-				  console.log('mock接口');
-				  resolve(res.data);
-				} else if (!/^\/api/.test(params.url)) {
+        if (/^\/mockapi/.test(params.url)) {
+          console.log('mock接口');
+          resolve(res.data);
+        } else if (!/^\/api/.test(params.url)) {
           console.log('第三方接口');
           resolve(res.data);
         }

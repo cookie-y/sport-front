@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia';
 import { getAccountInfo } from '@/api/account';
 import { TAccount } from '@/types/object/account';
-import { setItem, getItem } from '@/utils/cookie';
 
 export const useAccountStore = defineStore('account', {
   state: () => ({
@@ -9,12 +8,12 @@ export const useAccountStore = defineStore('account', {
     loginToken: '',
   }),
   getters: {
-    token: (state) => state.loginToken || getItem('token'),
+    token: (state) => state.loginToken || uni.getStorageSync('token'),
   },
   actions: {
     // 保存token
     setToken(token: string) {
-      setItem('token', token, 60 * 60 * 24);
+      uni.setStorageSync('token', token);
       this.loginToken = token;
     },
     // 更新邮箱

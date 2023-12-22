@@ -74,7 +74,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import dayjs from 'dayjs';
-import { getUrlParam } from '@/utils/router';
+import { onLoad } from '@dcloudio/uni-app';
 import { RACE_STATE } from '@/constants/race';
 import { TFile } from '@/types/file';
 import { addRace, editRace, getRaceDetail } from '@/api/race';
@@ -112,7 +112,11 @@ const rules = {
 };
 
 // 数据初始化
-const raceId = getUrlParam('raceId');
+let raceId: string | undefined;
+
+onLoad((option: any) => {
+  raceId = option.raceId;
+});
 const isEdit = ref<boolean>(Boolean(raceId));
 onMounted(async () => {
   if (isEdit.value) {

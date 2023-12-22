@@ -80,14 +80,20 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { isEmpty, flatten, toNumber } from 'lodash';
+import { onLoad } from '@dcloudio/uni-app';
 import { getParticipateTeamList } from '@/api/race';
 import { addOrUpdateScheduleList, getScheduleList, delSchedule } from '@/api/schedule';
 import { TBasicAccount } from '@/types/object/account';
-import { getUrlParam, handleBack } from '@/utils/router';
+import { handleBack } from '@/utils/router';
 import { flatObject } from '@/utils/method';
 
-const raceId = toNumber(getUrlParam('raceId'));
-const date = getUrlParam('date');
+let raceId: number;
+let date: string;
+
+onLoad((option: any) => {
+  raceId = toNumber(option.raceId);
+  date = option.date;
+});
 
 interface TAgainstItem {
   id?: number; // 赛程id
