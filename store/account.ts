@@ -25,7 +25,7 @@ export const useAccountStore = defineStore('account', {
       this.accountInfo = account;
     },
     // 获取用户基本数据
-    async getAccountInfo() {
+    async getAccountInfoAction() {
       if (this.accountInfo === null && this.token) {
         const { data } = await getAccountInfo();
         this.accountInfo = data;

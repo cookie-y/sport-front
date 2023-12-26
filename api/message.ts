@@ -4,9 +4,9 @@ import { TResponceMsgList, TResponceSenderMsgs } from '@/types/request/message';
 
 // 获取消息列表
 export const getMsgList = (params: specificRequest): Promise<TResponceMsgList> => {
-  return get('/mockapi/getMsgList', params);
+  return get('/eggapi/getMsgList', params);
 };
 
 export const getMsgDetail = (params: specificRequest): Promise<TResponceSenderMsgs> => {
-  return get('/mockapi/getMsgDetail', params);
+  return get('/eggapi/getMsgDetail', params);
 };

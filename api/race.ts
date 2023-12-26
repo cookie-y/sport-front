@@ -10,50 +10,50 @@ import {
 
 // 获取比赛列表
 export const getRaceList = (params: specificRequest): Promise<TResRaceList> => {
-  return get('/mockapi/getRaceList', params);
+  return get('/eggapi/getRaceList', params);
 };
 
 // 获取推荐比赛
 export const getRecommendRace = (params: specificRequest): Promise<TResRecommendRace> => {
-  return get('/mockapi/getRecommendRace', params);
+  return get('/eggapi/getRecommendRace', params);
 };
 
 // 获取比赛详情
 export const getRaceDetail = (params: specificRequest): Promise<TResRaceDetail> => {
-  return get('/mockapi/getRaceDetail', params);
+  return get('/eggapi/getRaceDetail', params);
 };
 
 // 获取参赛队伍列表
 export const getParticipateTeamList = (params: specificRequest): Promise<TResRaceParticipateTeamList> => {
-  return get('/mockapi/getParticipateTeamList', params);
+  return get('/eggapi/getParticipateTeamList', params);
 };
 
 // 获取参赛队员列表
 export const getParticipantList = (params: specificRequest): Promise<TResRaceParticipantList> => {
-  return get('/mockapi/getTeamParticipantList', params);
+  return get('/eggapi/getTeamParticipantList', params);
 };
 
 // 上传分组名单
 export const editGroupInf = (params: specificRequest): Promise<resStructureSubmit> => {
-  return post('/mockapi/editGroupInf', params);
+  return post('/eggapi/editGroupInf', params);
 };
 
 // 参赛
 export const addParticipants = (params: specificRequest): Promise<resStructureSubmit> => {
-  return post('/mockapi/addParticipants', params);
+  return post('/eggapi/addParticipants', params);
 };
 
 // 新增比赛
 export const addRace = (params: specificRequest): Promise<resStructureSubmit> => {
-  return post('/mockapi/addRace', params);
+  return post('/eggapi/addRace', params);
 };
 
 // 编辑比赛基本信息
 export const editRace = (params: specificRequest): Promise<resStructureSubmit> => {
-  return post('/mockapi/editRace', params);
+  return post('/eggapi/editRace', params);
 };
 
 // 删除比赛基本信息
 export const delRace = (params: specificRequest): Promise<resStructureSubmit> => {
-  return post('/mockapi/delRace', params);
+  return post('/eggapi/delRace', params);
 };

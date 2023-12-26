@@ -52,9 +52,10 @@ const rules = {
 // 处理登录
 const info = ref();
 const store = useAccountStore();
-const { setToken, getAccountInfo } = store;
+const { setToken, getAccountInfoAction } = store;
 const handleSignIn = async () => {
   try {
+    console.log('fhuwohfod');
     await info.value.validate();
     const { accountId, password } = form.value;
     const params = {
@@ -65,12 +66,13 @@ const handleSignIn = async () => {
     };
     const res = await signIn(params);
     setToken(res.data);
-    getAccountInfo();
+    getAccountInfoAction();
     uni.$u.toast(res.message);
     uni.switchTab({ url: '/pages/race/index' });
   } catch (errors: any) {
-    if (errors.data.message) {
-      uni.$u.toast(errors.data.message);
+    console.log(errors);
+    if (errors?.data?.message) {
+      uni.$u.toast(errors?.data?.message);
     } else {
       console.log(errors);
     }

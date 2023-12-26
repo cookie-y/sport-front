@@ -19,6 +19,10 @@ export default defineConfig({
     hmr: true,
     // 配置代理
     proxy: {
+      '/eggapi': {
+        target: 'http://192.168.0.192:7001',
+        changeOrigin: true,
+      },
       '/restapi': {
         target: 'https://restapi.amap.com',
         changeOrigin: true,

@@ -1,11 +1,13 @@
 import { request as paramsType, specificRequest, resStructure } from '@/types/request';
 
-export const baseURL = '/';
+export const baseURL = 'http://192.168.0.192:8888';
 
 export const request = (params: paramsType): Promise<any> => {
   return new Promise((resolve, reject) => {
+    const { url, ...other } = params;
     const config = {
-      ...params,
+      ...other,
+      url: baseURL + url,
       success: (res: any) => {
         if (/^\/mockapi/.test(params.url)) {
           console.log('mock接口');

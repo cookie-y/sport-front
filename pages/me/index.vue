@@ -40,8 +40,8 @@ const store = useAccountStore();
 
 const accountInfo = ref({});
 onMounted(async () => {
-  const { getAccountInfo } = store;
-  accountInfo.value = await getAccountInfo();
+  const { getAccountInfoAction } = store;
+  accountInfo.value = await getAccountInfoAction();
 });
 
 // 处理编辑
