@@ -1,5 +1,7 @@
 <template>
   <view>
+    <statusBar />
+
     <view :class="$style['race-inf']">
       <u-icon name="arrow-left" size="20" color="#fff" @click="handleBack" />
       <view class="flex">

@@ -1,4 +1,6 @@
 <template>
+  <statusBar />
+
   <view class="flex m-15 justify-between items-center">
     <!-- 搜索 -->
     <search-box />
@@ -47,6 +49,6 @@ onMounted(async () => {
 .race {
   display: flex;
   flex-direction: column;
-  margin: 0 0.4rem 0.5333rem;
+  margin: 0 30rpx 20px;
 }
 </style>

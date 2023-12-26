@@ -1,7 +1,11 @@
 <template>
-  <view class="flex justify-between pl-5 pr-15 pt-10">
-    <u-icon name="arrow-left" size="18" @click="handleBack" />
-    <text class="fs-20">{{ title }}</text>
+  <view>
+    <statusBar />
+
+    <view class="flex justify-between pl-5 pr-15 pt-10">
+      <u-icon name="arrow-left" size="18" @click="handleBack" />
+      <text class="fs-20">{{ title }}</text>
+    </view>
   </view>
 </template>
 
@@ -15,5 +19,3 @@ withDefaults(defineProps<navigation>(), {
   title: '',
 });
 </script>
-
-<style></style>

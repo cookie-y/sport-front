@@ -1,5 +1,7 @@
 <template>
   <view>
+    <statusBar />
+
     <ReceivedItem
       v-for="(item, index) in msgList"
       :key="index"

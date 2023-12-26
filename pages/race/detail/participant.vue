@@ -99,6 +99,6 @@ defineExpose({
 .team {
   white-space: nowrap;
   width: 100%;
-  margin-top: 0.1333rem;
+  margin-top: 5px;
 }
 </style>

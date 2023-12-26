@@ -1,5 +1,7 @@
 <template>
   <view :class="$style.container">
+    <statusBar />
+
     <view :class="$style.info" @click="handleEdit">
       <image :src="accountInfo?.logo" :class="$style.logo" />
       <view class="flex flex-col items-center">

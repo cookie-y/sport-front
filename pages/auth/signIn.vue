@@ -85,7 +85,7 @@ const handleSignIn = async () => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 8rem;
+  width: 300px;
   height: 400px;
   margin: 50px auto;
   padding: 100px 20px 0;

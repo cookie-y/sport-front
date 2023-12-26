@@ -89,7 +89,7 @@ onMounted(() => {
 <style lang="scss" module>
 .container {
   max-height: 200px;
-  padding: 0.1333rem 0.2667rem;
+  padding: 5px 10px;
   overflow-y: scroll;
 }
 </style>
