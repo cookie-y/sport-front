@@ -12,7 +12,7 @@ export const request = (params: paramsType): Promise<any> => {
         if (/^\/mockapi/.test(params.url)) {
           console.log('mock接口');
           resolve(res.data);
-        } else if (!/^\/api/.test(params.url)) {
+        } else if (!/^\/eggapi/.test(url)) {
           console.log('第三方接口');
           resolve(res.data);
         }

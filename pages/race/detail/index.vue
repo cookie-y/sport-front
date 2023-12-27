@@ -34,15 +34,13 @@
         :current="currentTab"
         @click="handleChangeTab"
       />
-      <KeepAlive>
-        <component
-          ref="tab"
-          :is="tabList[currentTab].component"
-          :raceData="raceData"
-          :teamList="participateTeams"
-          @getTeamList="getparticipateTeams"
-        />
-      </KeepAlive>
+      <component
+        ref="tab"
+        :is="tabList[currentTab].component"
+        :raceData="raceData"
+        :teamList="participateTeams"
+        @getTeamList="getparticipateTeams"
+      />
     </view>
 
     <Participate v-if="raceData.state === ENTER" v-model:show="show" :kind="raceData.kind" :raceId="raceData.raceId" />
@@ -116,10 +114,7 @@ const raceData = ref<TRace>({
   raceStart: '',
   rule: 1,
   kind: 1,
-  organize: {
-    accountId: 0,
-    accountName: '',
-  },
+  organizerName: '',
 });
 // 获取比赛详情
 const getDetail = async () => {
