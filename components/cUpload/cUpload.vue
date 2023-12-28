@@ -19,6 +19,7 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
 import { TFile } from '@/types/file';
+import { uploadImg } from '@/api/common';
 
 interface cUpload {
   fileList: Array<TFile>;
@@ -49,8 +50,15 @@ const deletePic = (event: Event) => {
 };
 
 // 处理添加
-const afterRead = (event: Event) => {
-  const arr = props.fileList.concat(event.file);
+const afterRead = async (event: Event) => {
+  const lists: Array<TFile> = [].concat(event.file);
+  const uploadList = lists.map((item) => {
+    return uploadImg({ type: 'account', filePath: item.url });
+  });
+
+  const res = await Promise.all(uploadList);
+  uni.$u.toast('上传成功');
+  const arr = props.fileList.concat(res);
   emit('update:fileList', arr);
 };
 </script>

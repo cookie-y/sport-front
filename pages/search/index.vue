@@ -1,4 +1,5 @@
 <template>
+  <statusBar />
   <view :class="$style['search-box']">
     <u-icon name="arrow-left" size="20" class="mr-5" @click="handleBack" />
     <u-search

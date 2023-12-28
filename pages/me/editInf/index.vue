@@ -11,14 +11,7 @@
         <u-input v-model="form.accountName" placeholder="请输入名称" clearable class="bg-fff" />
       </u-form-item>
       <u-form-item label="图标" prop="logo" borderBottom>
-        <u-upload
-          :fileList="form.logo"
-          name="logo"
-          @delete="deletePic"
-          :maxCount="1"
-          :previewFullImage="true"
-          @afterRead="afterRead"
-        />
+        <cUpload v-model:fileList="form.logo" name="logo" :maxCount="1" />
       </u-form-item>
       <view class="flex mt-20">
         <u-button text="取消" plain type="primary" class="mr-20" @click="handleCancel" />
@@ -95,20 +88,6 @@ onMounted(async () => {
   }
 });
 
-// 处理删除图片
-const deletePic = () => {
-  form.value.logo = [];
-};
-
-// 上传图片成功
-const afterRead = (event: { file: object }) => {
-  form.value.logo.push({
-    ...event.file,
-    status: 'uploading',
-    message: '上传中',
-  });
-};
-
 // 操作
 // 处理取消
 const handleCancel = () => {
@@ -123,10 +102,11 @@ const handleEdit = async () => {
   try {
     await info.value.validate();
     const { school, logo, accountName } = form.value;
-    const param = { schoolId: school.schoolId, accountName, logo: logo.join(',') };
+    const correctLogo = logo[0].url;
+    const param = { schoolId: school.schoolId, accountName, logo: correctLogo };
     const res = await editAccountInfo({ data: param });
     uni.$u.toast(res.message);
-    setAccountInfo({ accountName, logo: logo.join(','), school });
+    setAccountInfo({ accountName, logo: correctLogo, school });
     uni.navigateBack();
   } catch (errors) {
     console.log(errors);
