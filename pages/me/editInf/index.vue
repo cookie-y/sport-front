@@ -11,7 +11,7 @@
         <u-input v-model="form.accountName" placeholder="请输入名称" clearable class="bg-fff" />
       </u-form-item>
       <u-form-item label="图标" prop="logo" borderBottom>
-        <cUpload v-model:fileList="form.logo" name="logo" :maxCount="1" />
+        <cUpload v-model:fileList="form.logo" name="logo" :maxCount="1" type="account" />
       </u-form-item>
       <view class="flex mt-20">
         <u-button text="取消" plain type="primary" class="mr-20" @click="handleCancel" />

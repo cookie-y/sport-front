@@ -1,80 +1,80 @@
 <template>
-  <navigationBar title="新增比赛" />
-  <view class="m-15">
-    <u-form :model="form" labelWidth="110" :rules="rules" ref="info" errorType="toast">
-      <u-form-item label="比赛名称" prop="raceName" borderBottom required>
-        <u-input v-model="form.raceName" placeholder="请输入比赛名称" class="bg-fff" />
-      </u-form-item>
-      <u-form-item label="海报" prop="racePoster" borderBottom required>
-        <cUpload v-model:fileList="form.racePoster" :maxCount="1" />
-      </u-form-item>
-      <u-form-item label="赛制" prop="rule" borderBottom required>
-        <u-radio-group v-model="form.rule">
-          <u-radio class="mr-10" label="五局三胜" :name="1" />
-          <u-radio label="三局两胜" :name="2" />
-        </u-radio-group>
-      </u-form-item>
-      <u-form-item label="限制" prop="kind" borderBottom required>
-        <u-radio-group v-model="form.kind">
-          <u-radio class="mr-10" label="女队" :name="1" />
-          <u-radio class="mr-10" label="男队" :name="2" />
-          <u-radio label="混合场" :name="3" />
-        </u-radio-group>
-      </u-form-item>
-      <u-form-item label="场地示意图" prop="venueImgs" borderBottom required>
-        <cUpload v-model:fileList="form.venueImgs" />
-      </u-form-item>
-      <u-form-item label="比赛报名时间" prop="applyStart" borderBottom required>
-        <u-tag
-          :text="form.applyStart || '选择时间'"
-          plain
-          size="mini"
-          type="primary"
-          bgColor="#fff"
-          @click="handleChooseDate('apply')"
-        />
-        <text v-if="form.applyDeadline" class="ml-5 mr-5">-</text>
-        <u-tag v-if="form.applyDeadline" :text="form.applyDeadline" plain size="mini" type="primary" bgColor="#fff" />
-      </u-form-item>
-      <u-form-item label="比赛开始日期" prop="raceStart" borderBottom required>
-        <u-tag
-          :text="form.raceStart || '选择时间'"
-          plain
-          size="mini"
-          type="primary"
-          bgColor="#fff"
-          @click="handleChooseDate('race')"
-        />
-      </u-form-item>
-      <u-form-item label="备注" borderBottom>
-        <u-textarea v-model="form.tips" placeholder="请输入内容" />
-      </u-form-item>
-      <u-form-item label="附件" borderBottom>
-        <cUpload v-model:fileList="form.annex" accept="file" />
-      </u-form-item>
-      <view class="flex mt-20">
-        <u-button text="保存草稿" plain type="primary" class="mr-20" @click="() => handleSave(RACE_STATE.EDIT)" />
-        <u-button :text="isEdit ? '确认' : '新增'" type="primary" @click="() => handleSave(RACE_STATE.EXAMINE)" />
-      </view>
-    </u-form>
+  <view>
+    <navigationBar :title="isEdit ? '编辑比赛' : '新增比赛'" />
+    <view class="m-15">
+      <u-form :model="form" labelWidth="110" :rules="rules" ref="info" errorType="toast">
+        <u-form-item label="比赛名称" prop="raceName" borderBottom required>
+          <u-input v-model="form.raceName" placeholder="请输入比赛名称" class="bg-fff" />
+        </u-form-item>
+        <u-form-item label="海报" prop="racePoster" borderBottom required>
+          <cUpload v-model:fileList="form.racePoster" :maxCount="1" type="race" />
+        </u-form-item>
+        <u-form-item label="赛制" prop="rule" borderBottom required>
+          <u-radio-group v-model="form.rule">
+            <u-radio class="mr-10" label="五局三胜" :name="1" />
+            <u-radio label="三局两胜" :name="2" />
+          </u-radio-group>
+        </u-form-item>
+        <u-form-item label="限制" prop="kind" borderBottom required>
+          <u-radio-group v-model="form.kind">
+            <u-radio class="mr-10" label="女队" :name="1" />
+            <u-radio class="mr-10" label="男队" :name="2" />
+            <u-radio label="混合场" :name="3" />
+          </u-radio-group>
+        </u-form-item>
+        <u-form-item label="场地示意图" prop="venueImgs" borderBottom required>
+          <cUpload v-model:fileList="form.venueImgs" multiple type="race" />
+        </u-form-item>
+        <u-form-item label="比赛报名时间" prop="applyStart" borderBottom required>
+          <u-tag
+            :text="form.applyStart || '选择时间'"
+            plain
+            size="mini"
+            type="primary"
+            bgColor="#fff"
+            @click="handleChooseDate('apply')"
+          />
+          <text v-if="form.applyDeadline" class="ml-5 mr-5">-</text>
+          <u-tag v-if="form.applyDeadline" :text="form.applyDeadline" plain size="mini" type="primary" bgColor="#fff" />
+        </u-form-item>
+        <u-form-item label="比赛开始日期" prop="raceStart" borderBottom required>
+          <u-tag
+            :text="form.raceStart || '选择时间'"
+            plain
+            size="mini"
+            type="primary"
+            bgColor="#fff"
+            @click="handleChooseDate('race')"
+          />
+        </u-form-item>
+        <u-form-item label="备注" borderBottom>
+          <u-textarea v-model="form.tips" placeholder="请输入内容" />
+        </u-form-item>
+        <view class="flex mt-20">
+          <u-button text="保存草稿" plain type="primary" class="mr-20" @click="() => handleSave(RACE_STATE.EDIT)" />
+          <u-button :text="isEdit ? '确认' : '新增'" type="primary" @click="() => handleSave(RACE_STATE.EXAMINE)" />
+        </view>
+      </u-form>
 
-    <u-calendar
-      :show="showCalendar"
-      :mode="isApply ? 'range' : 'single'"
-      :minDate="isApply ? null : dayjs(form.applyDeadline).add(1, 'day').format()"
-      :defaultDate="defaultDate"
-      color="#003eb3"
-      round="4"
-      @confirm="handleConfirmDate"
-      @close="showCalendar = false"
-    />
+      <u-calendar
+        :show="showCalendar"
+        :mode="isApply ? 'range' : 'single'"
+        :minDate="isApply ? null : dayjs(form.applyDeadline).add(1, 'day').format()"
+        :defaultDate="defaultDate"
+        color="#003eb3"
+        round="4"
+        @confirm="handleConfirmDate"
+        @close="showCalendar = false"
+      />
+    </view>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, computed } from 'vue';
 import dayjs from 'dayjs';
 import { onLoad } from '@dcloudio/uni-app';
+import { isEmpty } from 'lodash';
 import { RACE_STATE } from '@/constants/race';
 import { TFile } from '@/types/file';
 import { addRace, editRace, getRaceDetail } from '@/api/race';
@@ -90,7 +90,6 @@ interface TForm {
   racePoster?: Array<TFile>; // 比赛海报
   venueImgs?: Array<TFile>; // 场地示意图
   tips?: string; // 备注
-  annex?: Array<TFile>; // 附件
 }
 const form = ref<TForm>({
   raceStart: '',
@@ -99,7 +98,6 @@ const form = ref<TForm>({
   kind: 1,
   applyDeadline: '',
   raceName: '',
-  annex: [],
   tips: '',
   racePoster: [],
   venueImgs: [],
@@ -112,17 +110,22 @@ const rules = {
 };
 
 // 数据初始化
-let raceId: string | undefined;
+const raceId = ref<string | undefined>('');
+const isEdit = computed(() => Boolean(raceId.value));
 
-onLoad((option: any) => {
-  raceId = option.raceId;
-});
-const isEdit = ref<boolean>(Boolean(raceId));
-onMounted(async () => {
+onLoad(async (option: any) => {
+  raceId.value = option.raceId;
+
   if (isEdit.value) {
-    const res = await getRaceDetail({ data: { raceId } });
-    const { raceName, kind, applyStart, applyDeadline, raceStart, rule } = res.data;
-    form.value = { raceName, kind, raceStart, applyStart, applyDeadline, rule, raceId };
+    const res = await getRaceDetail({ data: { raceId: raceId.value } });
+    const { raceName, kind, applyStart, applyDeadline, raceStart, rule, racePoster, venueImgs } = res.data;
+    form.value = { ...form.value, raceName, kind, raceStart, applyStart, applyDeadline, rule, raceId };
+    if (racePoster) {
+      form.value.racePoster = [{ url: racePoster }];
+    }
+    if (!isEmpty(venueImgs)) {
+      form.value.venueImgs = venueImgs.split(',').map((item: string) => ({ url: item }));
+    }
   }
 });
 
@@ -172,9 +175,8 @@ const handleSave = async (state: number) => {
       data: {
         ...form.value,
         state,
-        venueImgs: form.value.venueImgs?.join(','),
-        racePoster: form.value.racePoster?.join(','),
-        annex: form.value?.annex?.join(','),
+        venueImgs: form.value.venueImgs?.map((item: TFile) => item.url).join(','),
+        racePoster: form.value.racePoster[0].url,
       },
     };
     if (isEdit.value) {

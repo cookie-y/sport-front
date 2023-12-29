@@ -1,4 +1,5 @@
 <template>
+  <navigationBar :title="isEdit ? '编辑队员' : '新增队员'" />
   <u-form :model="form" labelWidth="100" :rules="rules" ref="info" errorType="toast" :class="$style.container">
     <u-form-item label="学号" prop="studentId" borderBottom required>
       <u-input v-model="form.studentId" placeholder="请输入学号" class="bg-fff" />
@@ -13,7 +14,7 @@
       </u-radio-group>
     </u-form-item>
     <u-form-item label="照片" prop="image" borderBottom required>
-      <cUpload v-model:fileList="form.image" :maxCount="1" />
+      <cUpload v-model:fileList="form.image" :maxCount="1" type="member" />
     </u-form-item>
     <u-form-item label="类型" prop="type" borderBottom>
       <u-tag
@@ -126,12 +127,15 @@ const handleEdit = async () => {
   try {
     await info.value.validate();
     let res;
+    const param = {
+      data: { ...form.value, image: form.value.image[0].url },
+    };
     if (isEdit.value) {
       // 编辑
-      res = await editMember({ data: { ...form.value, image: form.value.image.join(',') } });
+      res = await editMember(param);
     } else {
       // 新增
-      res = await addMember({ data: { ...form.value, image: form.value.image.join(',') } });
+      res = await addMember(param);
     }
     uni.$u.toast(res.message);
     uni.redirectTo({ url: '/pages/member/list' });

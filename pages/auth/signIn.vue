@@ -70,7 +70,6 @@ const handleSignIn = async () => {
     uni.$u.toast(res.message);
     uni.switchTab({ url: '/pages/race/index' });
   } catch (errors: any) {
-    console.log(errors);
     if (errors?.data?.message) {
       uni.$u.toast(errors?.data?.message);
     } else {
