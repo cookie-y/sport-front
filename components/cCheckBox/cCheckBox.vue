@@ -26,10 +26,10 @@ const handleCheck = () => {
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  background: #fff;
+  background-color: #fff;
 
   &-checked {
-    background: $u-orange8 !important;
+    background-color: $u-orange8 !important;
   }
 }
 </style>

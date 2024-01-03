@@ -1,51 +1,53 @@
 <template>
-  <navigationBar :title="isEdit ? '编辑队员' : '新增队员'" />
-  <u-form :model="form" labelWidth="100" :rules="rules" ref="info" errorType="toast" :class="$style.container">
-    <u-form-item label="学号" prop="studentId" borderBottom required>
-      <u-input v-model="form.studentId" placeholder="请输入学号" class="bg-fff" />
-    </u-form-item>
-    <u-form-item label="姓名" prop="name" borderBottom required>
-      <u-input v-model="form.name" placeholder="请输入姓名" class="bg-fff" />
-    </u-form-item>
-    <u-form-item label="性别" prop="name" borderBottom>
-      <u-radio-group v-model="form.sex" placement="row">
-        <u-radio label="男" :name="0" class="mr-15" />
-        <u-radio label="女" :name="1" />
-      </u-radio-group>
-    </u-form-item>
-    <u-form-item label="照片" prop="image" borderBottom required>
-      <cUpload v-model:fileList="form.image" :maxCount="1" type="member" />
-    </u-form-item>
-    <u-form-item label="类型" prop="type" borderBottom>
-      <u-tag
-        :text="MEMBER_TYPES.get(form.type)"
-        plain
-        size="mini"
-        type="primary"
-        borderColor="#003eb3"
-        @click="showPicker = true"
-      />
-      <u-picker
-        :show="showPicker"
-        :columns="[[...MEMBER_TYPES.values()]]"
-        @confirm="handleConfirmType"
-        @cancel="showPicker = false"
-      />
-    </u-form-item>
-    <u-form-item label="联系方式" prop="phone" borderBottom required>
-      <u-input v-model="form.phone" placeholder="请输入手机号" clearable class="bg-fff" />
-    </u-form-item>
-    <u-form-item label="是否是队长" prop="isCaptain" borderBottom>
-      <u-radio-group v-model="form.isCaptain" placement="row">
-        <u-radio label="是" :name="true" class="mr-15" />
-        <u-radio label="否" :name="false" />
-      </u-radio-group>
-    </u-form-item>
-    <view class="flex mt-20">
-      <u-button text="取消" plain type="primary" class="mr-20" @click="handleBack" />
-      <u-button :text="isEdit ? '确认' : '新增'" type="primary" @click="handleEdit" />
-    </view>
-  </u-form>
+  <view>
+    <navigationBar :title="isEdit ? '编辑队员' : '新增队员'" />
+    <u-form :model="form" labelWidth="100" :rules="rules" ref="info" errorType="toast" :class="$style.container">
+      <u-form-item label="学号" prop="studentId" borderBottom required>
+        <u-input v-model="form.studentId" placeholder="请输入学号" class="bg-fff" />
+      </u-form-item>
+      <u-form-item label="姓名" prop="name" borderBottom required>
+        <u-input v-model="form.name" placeholder="请输入姓名" class="bg-fff" />
+      </u-form-item>
+      <u-form-item label="性别" prop="name" borderBottom>
+        <u-radio-group v-model="form.sex" placement="row">
+          <u-radio label="男" :name="0" class="mr-15" />
+          <u-radio label="女" :name="1" />
+        </u-radio-group>
+      </u-form-item>
+      <u-form-item label="照片" prop="image" borderBottom required>
+        <cUpload v-model:fileList="form.image" :maxCount="1" type="member" />
+      </u-form-item>
+      <u-form-item label="类型" prop="type" borderBottom>
+        <u-tag
+          :text="MEMBER_TYPES.get(form.type)"
+          plain
+          size="mini"
+          type="primary"
+          borderColor="#003eb3"
+          @click="showPicker = true"
+        />
+        <u-picker
+          :show="showPicker"
+          :columns="[[...MEMBER_TYPES.values()]]"
+          @confirm="handleConfirmType"
+          @cancel="showPicker = false"
+        />
+      </u-form-item>
+      <u-form-item label="联系方式" prop="phone" borderBottom required>
+        <u-input v-model="form.phone" placeholder="请输入手机号" clearable class="bg-fff" />
+      </u-form-item>
+      <u-form-item label="是否是队长" prop="isCaptain" borderBottom>
+        <u-radio-group v-model="form.isCaptain" placement="row">
+          <u-radio label="是" :name="true" class="mr-15" />
+          <u-radio label="否" :name="false" />
+        </u-radio-group>
+      </u-form-item>
+      <view class="flex mt-20">
+        <u-button text="取消" plain type="primary" class="mr-20" @click="handleBack" />
+        <u-button :text="isEdit ? '确认' : '新增'" type="primary" @click="handleEdit" />
+      </view>
+    </u-form>
+  </view>
 </template>
 
 <script setup lang="ts">
@@ -138,7 +140,7 @@ const handleEdit = async () => {
       res = await addMember(param);
     }
     uni.$u.toast(res.message);
-    uni.redirectTo({ url: '/pages/member/list' });
+    handleBack();
   } catch (err) {
     console.log(err);
   }

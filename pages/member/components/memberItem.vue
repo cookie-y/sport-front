@@ -49,6 +49,6 @@ const handleEdit = () => {
   align-items: center;
   padding: 20px;
   margin-top: 5px;
-  background: #fff;
+  background-color: #fff;
 }
 </style>

@@ -25,10 +25,9 @@ const jumpToDetail = () => {
 .card {
   position: relative;
   margin-bottom: 15px;
-  border: 1px solid #999;
   border-radius: 8px;
   font-size: 0;
-  background: #fff;
+  background-color: #fff;
 }
 
 .description {

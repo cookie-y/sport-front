@@ -135,7 +135,7 @@ const handleComfirm = async () => {
   padding: 5px 10px;
   margin-top: 5px;
   border-radius: 4px;
-  background: #fff;
+  background-color: #fff;
 }
 
 .group-results {
@@ -145,6 +145,6 @@ const handleComfirm = async () => {
   justify-content: space-between;
   padding: 10px;
   border-radius: 6px;
-  background: #fff;
+  background-color: #fff;
 }
 </style>

@@ -5,7 +5,7 @@
     <view :class="$style.content">
       <u-text v-if="title" :text="title" :size="16" color="#333" class="mb-10" />
       <u-text :text="content" color="#666" />
-      <view class="flex mt-5 flex-row-reverse">
+      <view class="flex mt-5 flex-row-reverse" v-if="false">
         <view>
           <u-button text="录入比赛成绩" size="small" type="primary" />
         </view>

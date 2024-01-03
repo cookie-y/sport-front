@@ -44,6 +44,6 @@ const handleChange = (checked: boolean, checkedValue: number) => {
 <style lang="scss" scoped>
 .c-check-box-group {
   border-radius: 10px;
-  background: #fff;
+  background-color: #fff;
 }
 </style>

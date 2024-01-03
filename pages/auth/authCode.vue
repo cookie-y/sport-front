@@ -1,26 +1,30 @@
 <!-- 验证码校验 -->
 <template>
-  <navigationBar title="校验验证码" />
-  <view class="h-80 flex flex-col justify-between m-10">
-    <text>验证码已发送至邮箱:</text>
-    <u-code-input focus @finish="handleFinish" class="code" />
+  <view>
+    <navigationBar title="校验验证码" />
+    <view class="h-80 flex flex-col justify-between m-10">
+      <text>验证码已发送至邮箱：{{ encryptEmail(email) }}</text>
+      <u-code-input focus @finish="handleFinish" class="code" />
+    </view>
   </view>
 </template>
 
 <script setup lang="ts">
 import { onLoad } from '@dcloudio/uni-app';
+import { ref } from 'vue';
+import { encryptEmail } from '@/utils/desensitization';
 import { authCode } from '@/api/auth';
 
-let email: string | undefined;
+const email = ref<string | undefined>('');
 
 onLoad((option) => {
-  email = option.email;
+  email.value = option.email;
 });
 
 const handleFinish = async (code: string) => {
   try {
-    await authCode({ data: { code, email } });
-    uni.navigateTo({ url: `/pages/auth/resetPassword?email=${email}` });
+    await authCode({ data: { code, email: email.value } });
+    uni.navigateTo({ url: `/pages/auth/resetPassword?email=${email.value}` });
   } catch (error) {
     console.log(error);
   }
@@ -32,7 +36,7 @@ const handleFinish = async (code: string) => {
   justify-content: center;
   :deep {
     .u-code-input__item {
-      background: #fff;
+      background-color: #fff;
     }
   }
 }

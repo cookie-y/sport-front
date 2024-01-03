@@ -23,6 +23,6 @@ const jumpToSearchPage = () => {
   padding: 4px;
   border: 1px solid #999;
   border-radius: 10px;
-  background: white;
+  background-color: white;
 }
 </style>

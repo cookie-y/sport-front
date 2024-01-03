@@ -34,7 +34,7 @@ withDefaults(defineProps<TReceive>(), {});
   height: 70px;
   padding: 10px;
   border-bottom: 1px $u-gray8 solid;
-  background: #fff;
+  background-color: #fff;
 }
 
 .content {

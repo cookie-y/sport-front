@@ -20,7 +20,7 @@
       </view>
       <view class="flex flex-row-reverse">
         <view
-          v-if="!item.results"
+          v-if="operational && !item.results"
           @click.stop="
             () => {
               handleEnterScore(item.id as number);
@@ -38,10 +38,16 @@
 import dayjs from 'dayjs';
 import { TRaceScheduleItem } from '@/types/object/race';
 
-defineProps<{
-  time?: string;
-  schedule?: Array<TRaceScheduleItem>;
-}>();
+withDefaults(
+  defineProps<{
+    time?: string;
+    schedule?: Array<TRaceScheduleItem>;
+    operational?: boolean;
+  }>(),
+  {
+    operational: false,
+  },
+);
 
 const emits = defineEmits(['handleEnterScore', 'handleEdit']);
 const handleEnterScore = (id: number) => {

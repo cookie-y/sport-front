@@ -78,7 +78,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { isEmpty, flatten, toNumber } from 'lodash';
 import { onLoad } from '@dcloudio/uni-app';
 import { getParticipateTeamList } from '@/api/race';
@@ -87,12 +87,12 @@ import { TBasicAccount } from '@/types/object/account';
 import { handleBack } from '@/utils/router';
 import { flatObject } from '@/utils/method';
 
-let raceId: number;
-let date: string;
+const raceId = ref<number>();
+const date = ref<string>('');
 
 onLoad((option: any) => {
-  raceId = toNumber(option.raceId);
-  date = option.date;
+  raceId.value = toNumber(option.raceId);
+  date.value = option.date;
 });
 
 interface TAgainstItem {
@@ -136,15 +136,15 @@ const rules = {
 };
 
 // #region 初始化处理
-const isEdit = ref(!isEmpty(date));
+const isEdit = computed(() => !isEmpty(date.value));
 
 // 获取参赛队伍列表
 const options = ref<Array<Array<TBasicAccount>>>([]);
 const getParticipants = async () => {
-  if (!raceId) {
+  if (!raceId.value) {
     return;
   }
-  const params = { data: { raceId } };
+  const params = { data: { raceId: raceId.value } };
   const { data } = await getParticipateTeamList(params);
   const list = data.list.map(({ participateTeam: { accountId, accountName } }) => ({ accountId, accountName }));
   options.value = [list, [{ accountName: 'VS', accountId: 0 }], list];
@@ -153,7 +153,7 @@ const getParticipants = async () => {
 // 获取待编辑的赛程列表
 const getSchedleListByDate = async () => {
   const params = {
-    data: { date, raceId },
+    data: { date: date.value, raceId: raceId.value },
   };
   const { data } = await getScheduleList(params);
   const result = Object.keys(data).map((time) => {
@@ -181,7 +181,7 @@ const getSchedleListByDate = async () => {
 onMounted(async () => {
   getParticipants();
   if (isEdit.value) {
-    form.value.date = date as string;
+    form.value.date = date.value as string;
     getSchedleListByDate();
   }
 });
@@ -259,7 +259,6 @@ const handleDelAgainst = (arrangeIndex: number, againstIndex: number, item: TAga
 
 // 删除赛程
 const handleConfirmDel = async () => {
-  console.log(id);
   const { message } = await delSchedule({ data: { id } });
   uni.$u.toast(message);
   showModal.value = false;
@@ -286,11 +285,11 @@ const handleSubmit = async () => {
       return;
     }
     const params = {
-      data: { schedule, raceId },
+      data: { schedule, raceId: raceId.value },
     };
     const { message } = await addOrUpdateScheduleList(params);
     uni.$u.toast(message);
-    uni.redirectTo({ url: `/pages/me/iOrganized/scheduleList?raceId=${raceId}` });
+    uni.redirectTo({ url: `/pages/me/iOrganized/scheduleList?raceId=${raceId.value}` });
   } catch (error) {
     console.log(error);
   }
@@ -302,7 +301,7 @@ const handleSubmit = async () => {
   padding: 10px;
   border-radius: 8px;
   margin: 15px;
-  background: #fff;
+  background-color: #fff;
 }
 
 .required {

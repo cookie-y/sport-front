@@ -65,7 +65,7 @@ const handleEdit = () => {
   margin: 0 20px;
   padding: 25px 0;
   border-radius: 8px;
-  background: #fff;
+  background-color: #fff;
   .logo {
     width: 100px;
     height: 100px;

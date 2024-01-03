@@ -2,7 +2,7 @@
   <view>
     <navigationBar title="我参加的" />
 
-    <view>
+    <view class="m-15">
       <raceItem v-for="item in raceList" :key="item.raceId" :raceData="item" @click="handleClick(item.raceId)" />
     </view>
   </view>

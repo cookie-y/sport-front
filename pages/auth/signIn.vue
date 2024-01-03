@@ -55,7 +55,6 @@ const store = useAccountStore();
 const { setToken, getAccountInfoAction } = store;
 const handleSignIn = async () => {
   try {
-    console.log('fhuwohfod');
     await info.value.validate();
     const { accountId, password } = form.value;
     const params = {
@@ -73,6 +72,7 @@ const handleSignIn = async () => {
     if (errors?.data?.message) {
       uni.$u.toast(errors?.data?.message);
     } else {
+      uni.$u.toast(errors?.errMsg);
       console.log(errors);
     }
   }
@@ -81,12 +81,15 @@ const handleSignIn = async () => {
 
 <style lang="scss" module>
 .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 300px;
   height: 400px;
-  margin: 50px auto;
+  margin: -250px 0 0 -170px;
   padding: 100px 20px 0;
   background: url('/static/images/volleyball.png') 60% top;
 }

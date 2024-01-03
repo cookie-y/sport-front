@@ -76,6 +76,6 @@ onLoad((options) => {
   padding: 10px;
   margin: 10px 30px;
   border-radius: 6px;
-  background: #fff;
+  background-color: #fff;
 }
 </style>

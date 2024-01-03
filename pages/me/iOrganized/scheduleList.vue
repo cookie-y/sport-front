@@ -23,6 +23,7 @@
         v-for="(time, index) in Object.keys(schedules)"
         :key="index"
         :time="time"
+        :operational="true"
         :schedule="schedules[time]"
         @handleEdit="handleEdit"
         @handleEnterScore="handleEnterScore"

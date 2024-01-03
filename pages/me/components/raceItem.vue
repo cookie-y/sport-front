@@ -73,7 +73,7 @@ const editSchedule = () => {
   padding: 10px;
   margin: 12px 0;
   border-radius: 4px;
-  background: #fff;
+  background-color: #fff;
 }
 
 .info {

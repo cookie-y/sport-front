@@ -76,6 +76,7 @@ import dayjs from 'dayjs';
 import { onLoad } from '@dcloudio/uni-app';
 import { isEmpty } from 'lodash';
 import { RACE_STATE } from '@/constants/race';
+import { handleBack } from '@/utils/router';
 import { TFile } from '@/types/file';
 import { addRace, editRace, getRaceDetail } from '@/api/race';
 
@@ -187,7 +188,7 @@ const handleSave = async (state: number) => {
       ({ message } = await addRace(params));
     }
     uni.$u.toast(message);
-    uni.redirectTo({ url: '/pages/me/iOrganized/index' });
+    handleBack();
   } catch (err) {
     console.log(err);
   }
