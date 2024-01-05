@@ -15,7 +15,6 @@
 - [husky](https://typicode.github.io/husky/)：git hook时执行自定义操作
 - [Commitlint](https://commitlint.js.org/#/)：规范提交信息
 - [UnoCss](https://unocss.dev/guide/)：原子化CSS方案
-- [Mock](http://mockjs.com/)：模拟接口请求
 - [lodash](https://www.lodashjs.com/)：工具库
 - [Dayjs](https://dayjs.fenxianglu.cn/category/)：日期时间处理
 - [高德API](https://lbs.amap.com/api/webservice/summary)：天气定位
